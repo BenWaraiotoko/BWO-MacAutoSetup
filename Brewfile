@@ -41,6 +41,7 @@ cask "orbstack"      # Faster, lighter Docker alternative
 cask "ghostty"
 cask "nikitabobko/tap/aerospace"
 cask "discord"
+cask "firefox"
 cask "shottr" 
 cask "notion"
 cask "spotify"
