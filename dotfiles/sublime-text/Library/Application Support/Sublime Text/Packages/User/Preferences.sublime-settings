@@ -1,7 +1,7 @@
 {
     // Catppuccin Mocha Theme
     // Installed via Package Control: "Catppuccin"
-    "color_scheme": "Packages/Catppuccin/Mocha.tmTheme",
+    "color_scheme": "Packages/Catppuccin/build/Catppuccin Mocha.sublime-color-scheme",
     "theme": "Adaptive.sublime-theme",
 
     // Font (matches other tools in this setup)
