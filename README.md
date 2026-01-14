@@ -28,7 +28,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/BenWaraiotoko/BWO-MacAutoSet
 This bootstrap script will:
 1. Install Xcode Command Line Tools (includes Git)
 2. Install Homebrew
-3. Clone this repository to `~/Projects/MacAutoSetup`
+3. Clone this repository to `~/Projects/BWO-MacAutoSetup`
 4. Run the main [`bootstrap.sh`](bootstrap.sh) script
 
 ### Option 2: Existing System with Git
