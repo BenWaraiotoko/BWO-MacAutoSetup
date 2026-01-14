@@ -98,7 +98,6 @@ plugins=(
   # Command Line Tools
   fzf                    # Fuzzy finder keybindings and completions
   tmux                   # Tmux aliases and completions
-  ripgrep                # Ripgrep integration
 
   # Editor Support
   vscode                 # VS Code helper functions
@@ -162,69 +161,33 @@ export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias claude="~/.claude/local/claude --ide"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
-. "$HOME/.local/bin/env"
-eval "$(uv generate-shell-completion zsh)"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/bnardini/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+# Docker CLI completions (if Docker/OrbStack is installed)
+if [[ -d "$HOME/.docker/completions" ]]; then
+  fpath=($HOME/.docker/completions $fpath)
+  autoload -Uz compinit
+  compinit
+fi
+
+# UV (Python package manager) - only if installed
+if [[ -f "$HOME/.local/bin/env" ]]; then
+  . "$HOME/.local/bin/env"
+fi
+if command -v uv &>/dev/null; then
+  eval "$(uv generate-shell-completion zsh)"
+fi
 
 # ===========================================
-# VSPHERE AUDIT V3 - Configuration pour tests
+# PROJECT-SPECIFIC CONFIGURATION
 # ===========================================
 
-# Optimisation Node.js pour les tests
+# Node.js optimization for large projects
 export NODE_OPTIONS="--max-old-space-size=8192"
 
-# Variables d'environnement pour les tests
-export NODE_ENV="test"
-export CI=false
-export FORCE_COLOR=1
-
-# Path pour les outils de test
+# Path for local node_modules binaries
 export PATH="./node_modules/.bin:$PATH"
 
-# Aliases pour les tests du projet vSphere Audit v3
-alias vsphere-test="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm test"
-alias vsphere-test-watch="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run test:watch"
-alias vsphere-test-backend="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run test -w apps/backend"
-alias vsphere-test-frontend="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run test -w apps/frontend"
-alias vsphere-test-shared="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run test -w packages/shared"
-alias vsphere-lint="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run lint"
-alias vsphere-lint-fix="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run lint:fix"
-alias vsphere-typecheck="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run typecheck"
-alias vsphere-format="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run format"
-
-# Alias pour le développement
-alias vsphere-dev="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run dev"
-alias vsphere-dev-all="cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3 && npm run dev:all"
-
-# Fonction pour naviguer rapidement vers le projet
-vsphere() {
-  cd /Users/bnardini/Documents/GitHub/vsphere_audit_v3
-  echo "📁 Répertoire: $(pwd)"
-  echo "🔧 Node.js: $(node --version)"
-  echo "📦 NPM: $(npm --version)"
-  echo ""
-  echo "Commandes disponibles:"
-  echo "  vsphere-test          - Lancer tous les tests"
-  echo "  vsphere-test-watch    - Tests en mode watch"
-  echo "  vsphere-test-backend  - Tests du backend uniquement"
-  echo "  vsphere-test-frontend - Tests du frontend uniquement"
-  echo "  vsphere-test-shared   - Tests du package shared"
-  echo "  vsphere-lint          - Linter"
-  echo "  vsphere-typecheck     - Vérification TypeScript"
-  echo "  vsphere-dev           - Mode développement"
-  echo "  vsphere-dev-all       - Dev avec MongoDB"
-}
-
-
-# Added by Antigravity
-export PATH="/Users/bnardini/.antigravity/antigravity/bin:$PATH"
+# Antigravity (if installed)
+if [[ -d "$HOME/.antigravity/antigravity/bin" ]]; then
+  export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+fi
