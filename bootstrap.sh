@@ -47,8 +47,8 @@ if [[ -f ./Brewfile ]]; then
   echo "Installing applications from Brewfile..."
   echo "(Already installed packages will be skipped)"
 
-  # Use --no-lock to avoid lockfile issues, continue on errors
-  if ! brew bundle --file=./Brewfile --no-lock; then
+  # Continue on errors (some packages may fail if not signed into App Store, etc.)
+  if ! brew bundle --file=./Brewfile; then
     log_warning "Some Brewfile packages failed to install"
     log_info "This is often due to: Mac App Store sign-in required, or packages already installed differently"
     log_info "You can re-run this script safely - it will skip already installed packages"
@@ -80,12 +80,8 @@ else
   log_success "Powerlevel10k already installed"
 fi
 
-# Ensure pipx is available and in PATH
-if command -v pipx &>/dev/null; then
-  # Ensure pipx binaries are in PATH
-  eval "$(pipx ensurepath 2>/dev/null)" || true
-  export PATH="$HOME/.local/bin:$PATH"
-fi
+# Ensure pipx binaries are in PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Install SuperClaude Framework
 if command -v superclaude &>/dev/null; then
@@ -118,6 +114,16 @@ fi
 # Use GNU Stow to symlink dotfiles
 echo "Setting up dotfiles with GNU Stow..."
 if command -v stow &>/dev/null; then
+  # Remove existing configs that would conflict with stow
+  # (stow needs to manage these files, not replace existing ones)
+  rm -f "$HOME/.zshrc" 2>/dev/null || true
+  rm -f "$HOME/.vimrc" 2>/dev/null || true
+  rm -rf "$HOME/.config/nvim" 2>/dev/null || true
+  rm -rf "$HOME/.config/aerospace" 2>/dev/null || true
+  rm -rf "$HOME/.config/ghostty" 2>/dev/null || true
+  rm -rf "$HOME/.warp" 2>/dev/null || true
+  rm -rf "$HOME/.claude" 2>/dev/null || true
+
   stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude
   log_success "Dotfiles linked with stow"
 else

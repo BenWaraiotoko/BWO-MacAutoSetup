@@ -6,7 +6,7 @@
 set -eo pipefail
 
 REPO_URL="https://github.com/BenWaraiotoko/BWO-MacAutoSetup.git"
-CLONE_DIR="$HOME/Projects/MacAutoSetup"
+CLONE_DIR="$HOME/Projects/BWO-MacAutoSetup"
 
 echo "⏳ Bootstrapping BWO-MacAutoSetup..."
 
