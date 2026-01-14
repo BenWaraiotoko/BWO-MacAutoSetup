@@ -1,0 +1,19 @@
+{
+    // Catppuccin Mocha Theme
+    // Installed via Package Control: "Catppuccin"
+    "color_scheme": "Packages/Catppuccin/Mocha.tmTheme",
+    "theme": "Adaptive.sublime-theme",
+
+    // Font (matches other tools in this setup)
+    "font_face": "JetBrainsMono Nerd Font",
+    "font_size": 14,
+
+    // Editor Settings
+    "line_numbers": true,
+    "highlight_line": true,
+    "word_wrap": false,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "ensure_newline_at_eof_on_save": true
+}

@@ -123,12 +123,28 @@ if command -v stow &>/dev/null; then
   rm -rf "$HOME/.config/ghostty" 2>/dev/null || true
   rm -rf "$HOME/.warp" 2>/dev/null || true
   rm -rf "$HOME/.claude" 2>/dev/null || true
+  rm -rf "$HOME/Library/Application Support/Sublime Text/Packages/User" 2>/dev/null || true
 
-  stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude
+  stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude sublime-text
   log_success "Dotfiles linked with stow"
 else
   log_warning "stow not found - skipping dotfiles setup"
   log_info "Run this script again after brew bundle completes"
+fi
+
+# Install Sublime Text Catppuccin theme via Package Control
+SUBLIME_PACKAGES="$HOME/Library/Application Support/Sublime Text/Packages"
+if [[ -d "$SUBLIME_PACKAGES" ]]; then
+  if [[ ! -d "$SUBLIME_PACKAGES/Catppuccin" ]]; then
+    echo "Installing Catppuccin theme for Sublime Text..."
+    git clone --depth=1 https://github.com/catppuccin/sublime-text.git "$SUBLIME_PACKAGES/Catppuccin"
+    log_success "Catppuccin theme installed for Sublime Text"
+  else
+    log_success "Catppuccin theme already installed for Sublime Text"
+  fi
+else
+  log_info "Sublime Text not yet configured - Catppuccin will be installed on first launch"
+  log_info "After opening Sublime Text once, re-run this script or manually install Catppuccin"
 fi
 
 # macOS System Preferences
