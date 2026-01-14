@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx @modelcontextprotocol/server-sequential-thinking",
+      "args": [],
+      "env": {}
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx @context7/mcp",
+      "args": [],
+      "env": {}
+    },
+    "magic": {
+      "type": "stdio",
+      "command": "npx @21st/mcp",
+      "args": [],
+      "env": {}
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx @modelcontextprotocol/server-playwright",
+      "args": [],
+      "env": {}
+    }
+  },
+  "isQualifiedForDataSharing": false,
+  "hasAcknowledgedCostThreshold": true,
+  "recommendedSubscription": "pro",
+  "subscriptionUpsellShownCount": 5,
+  "oauthAccount": {
+    "accountUuid": "36eb0e3d-3e29-4e3f-be0c-5ce071993392",
+    "emailAddress": "bwoplan@proton.me",
+    "organizationUuid": "312925a4-c984-433c-b506-781e6311c792",
+    "organizationRole": "admin",
+    "workspaceRole": null,
+    "organizationName": "bwoplan@proton.me's Organization"
+  },
+  "s1mAccessCache": {
+    "312925a4-c984-433c-b506-781e6311c792": {
+      "hasAccess": false,
+      "timestamp": 1756211653589
+    }
+  },
+  "hasOpusPlanDefault": false
+}

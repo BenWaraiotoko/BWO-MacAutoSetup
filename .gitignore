@@ -1,0 +1,33 @@
+# Neovim
+dotfiles/nvim/.config/nvim/lazy-lock.json
+
+# warp
+dotfiles/warp/.warp/launch_configurations
+
+# Project Documentation
+CLAUDE.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor temporary files
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~
