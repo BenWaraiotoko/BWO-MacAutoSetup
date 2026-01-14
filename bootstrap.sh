@@ -131,6 +131,29 @@ else
   log_info "Run this script again after brew bundle completes"
 fi
 
+# macOS System Preferences
+echo "Configuring macOS settings..."
+
+# Finder: Show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Finder: Show file extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: Show path bar at bottom
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder: Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: Default to column view
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# Restart Finder to apply changes
+killall Finder 2>/dev/null || true
+
+log_success "macOS settings configured"
+
 # Note about Neovim setup
 echo ""
 echo "✅ Setup complete!"
