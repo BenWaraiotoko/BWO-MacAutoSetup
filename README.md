@@ -52,10 +52,14 @@ MacAutoSetup/
 │   ├── ghostty/                # Ghostty terminal configuration
 │   ├── aerospace/              # Tiling window manager config
 │   ├── warp/                   # Warp terminal themes
+│   ├── zed/                    # Zed editor config
+│   ├── sublime-text/           # Sublime Text preferences
+│   ├── obsidian/               # Obsidian vault config (copied, not stow-managed)
 │   └── superclaude/            # SuperClaude Framework config
 └── docs/
     ├── VIM_LEARNING_GUIDE.md   # Comprehensive Vim/Neovim guide
-    └── ZSH_PLUGINS.md          # Complete plugin reference
+    ├── ZSH_PLUGINS.md          # Complete plugin reference
+    └── TOOLS.md                # CLI tools reference
 ```
 
 ## 🛠 What Gets Installed
@@ -65,14 +69,17 @@ MacAutoSetup/
 - **Languages**: python, pipx, node, nvm
 - **Cloud & DevOps**: awscli, kubectl, tailscale
 - **GNU Tools**: coreutils, gnu-sed, findutils, gawk (preferred over BSD)
-- **Development**: gh (GitHub CLI), delta (git diff), jq, yq, mas (App Store CLI)
+- **Development**: gh (GitHub CLI), delta (git diff), jq, yq, mas (App Store CLI), 1Password CLI
+- **Terminal Viewers**: glow (Markdown), ranger (file manager), btop (resources), chafa (images), csvlens (CSV), eza (ls replacement)
+- **AI/ML**: llmfit (hardware compatibility), models (model comparison TUI), taproom (Homebrew TUI)
 
 ### GUI Applications
 - **Terminals**: Ghostty, Warp
-- **Development**: Visual Studio Code, Claude Code, Sublime Text, Postman, Ollama
-- **Productivity**: Raycast, Notion, Spotify
-- **Utilities**: Aerospace, Shottr, ForkLift, NetNewsWire, WiFiman
-- **Security**: Proton VPN, Proton Drive, Proton Mail, Proton Pass
+- **Editors**: Zed, Sublime Text, Claude Code, Postman
+- **AI Tools**: Claude, Ollama
+- **Productivity**: Raycast, Notion, Spotify, Obsidian, NetNewsWire, Perplexity (App Store)
+- **Utilities**: Aerospace, Shottr, ForkLift, WiFiman, Logi Options+, Resilio Sync
+- **Security**: 1Password, Proton VPN, Proton Drive, Proton Mail, Proton Pass
 - **Container Runtime**: OrbStack (lightweight Docker alternative)
 - **Communication**: Discord
 

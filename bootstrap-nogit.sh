@@ -47,7 +47,9 @@ if [ ! -d "$CLONE_DIR" ]; then
 else
   echo "📁 Directory $CLONE_DIR already exists"
   echo "   Pulling latest changes..."
-  cd "$CLONE_DIR" && git pull origin main || true
+  if ! (cd "$CLONE_DIR" && git pull origin main); then
+    echo "⚠️  git pull failed — continuing with existing local copy"
+  fi
 fi
 
 # Step 4: Run main bootstrap script

@@ -90,8 +90,6 @@ if command -v superclaude &>/dev/null; then
 elif command -v pipx &>/dev/null; then
   echo "Installing SuperClaude Framework..."
   if pipx install superclaude; then
-    # Add pipx bin to PATH for this session
-    export PATH="$HOME/.local/bin:$PATH"
 
     if command -v superclaude &>/dev/null; then
       echo "Running SuperClaude installation..."
@@ -124,8 +122,20 @@ if command -v stow &>/dev/null; then
   rm -rf "$HOME/.warp" 2>/dev/null || true
   rm -rf "$HOME/.claude" 2>/dev/null || true
   rm -rf "$HOME/Library/Application Support/Sublime Text/Packages/User" 2>/dev/null || true
+  rm -rf "$HOME/.config/zed" 2>/dev/null || true
 
-  stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude sublime-text
+  stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude sublime-text zed
+
+  # Obsidian config lives inside the vault, not HOME — copy instead of stow
+  OBSIDIAN_VAULT="$HOME/Documents/bwo-second-brain"
+  if [[ -d "$OBSIDIAN_VAULT" ]]; then
+    echo "Restoring Obsidian vault config..."
+    cp -r ./dotfiles/obsidian/.obsidian "$OBSIDIAN_VAULT/"
+    log_success "Obsidian config restored (open Obsidian to install community plugins)"
+  else
+    log_warning "Obsidian vault not found at $OBSIDIAN_VAULT — skipping config restore"
+    log_info "Create the vault first, then run: cp -r dotfiles/obsidian/.obsidian ~/Documents/bwo-second-brain/"
+  fi
   log_success "Dotfiles linked with stow"
 else
   log_warning "stow not found - skipping dotfiles setup"

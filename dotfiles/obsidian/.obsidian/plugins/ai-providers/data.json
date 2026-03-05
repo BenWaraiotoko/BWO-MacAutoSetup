@@ -1,0 +1,90 @@
+{
+  "_version": 1,
+  "debugLogging": false,
+  "useNativeFetch": false,
+  "providers": [
+    {
+      "id": "id-1769026038731",
+      "name": "Ollama gpt-oss:20b",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "gpt-oss:20b",
+      "availableModels": [
+        "codestral:latest",
+        "ministral-3:14b",
+        "gpt-oss:20b",
+        "gpt-oss:120b-cloud",
+        "deepseek-v3.1:671b-cloud",
+        "qwen3-coder:480b-cloud",
+        "qwen3-coder:30b",
+        "deepseek-r1:32b",
+        "qwen3:32b"
+      ]
+    },
+    {
+      "id": "id-1769026275785",
+      "name": "Ollama bge",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "bge-m3:latest",
+      "availableModels": [
+        "bge-m3:latest",
+        "nomic-embed-text:latest",
+        "codestral:latest",
+        "ministral-3:14b",
+        "gpt-oss:20b",
+        "gpt-oss:120b-cloud",
+        "deepseek-v3.1:671b-cloud",
+        "qwen3-coder:480b-cloud",
+        "qwen3-coder:30b",
+        "deepseek-r1:32b",
+        "qwen3:32b"
+      ]
+    },
+    {
+      "id": "id-1769026319068",
+      "name": "Ollama nomic",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "nomic-embed-text:latest",
+      "availableModels": [
+        "bge-m3:latest",
+        "nomic-embed-text:latest",
+        "codestral:latest",
+        "ministral-3:14b",
+        "gpt-oss:20b",
+        "gpt-oss:120b-cloud",
+        "deepseek-v3.1:671b-cloud",
+        "qwen3-coder:480b-cloud",
+        "qwen3-coder:30b",
+        "deepseek-r1:32b",
+        "qwen3:32b"
+      ]
+    },
+    {
+      "id": "id-1769026903182",
+      "name": "Ollama devstral",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "devstral-small-2:latest",
+      "availableModels": [
+        "devstral-small-2:latest",
+        "bge-m3:latest",
+        "nomic-embed-text:latest",
+        "codestral:latest",
+        "ministral-3:14b",
+        "gpt-oss:20b",
+        "gpt-oss:120b-cloud",
+        "deepseek-v3.1:671b-cloud",
+        "qwen3-coder:480b-cloud",
+        "qwen3-coder:30b",
+        "deepseek-r1:32b",
+        "qwen3:32b"
+      ]
+    }
+  ]
+}

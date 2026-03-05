@@ -1,5 +1,5 @@
-tap "nikitabobko/tap" # Aerospace
-tap "jorgerojas26/lazysql"
+tap "nikitabobko/tap"    # Aerospace - tiling window manager
+tap "jorgerojas26/lazysql" # LazySQL - terminal SQL client
 tap "AlexsJones/llmfit"  # LLM Fit - AI model hardware compatibility checker
 tap "arimxyer/tap"       # Models CLI - AI model comparison TUI
 tap "gromgit/brewtils"   # Taproom - Homebrew TUI browser
@@ -48,7 +48,7 @@ brew "findutils"
 brew "gawk"
 
 # GUI Applications
-cask "visual-studio-code"
+cask "zed"
 cask "raycast"
 # cask "docker"      # Docker Desktop - disabled in favor of OrbStack
 cask "orbstack"      # Faster, lighter Docker alternative
@@ -65,6 +65,7 @@ cask "proton-mail"
 cask "proton-pass"
 cask "forklift"
 cask "netnewswire"
+cask "obsidian"
 cask "ollama"
 cask "warp"
 cask "wifiman"
@@ -72,6 +73,10 @@ cask "sublime-text"
 cask "claude"
 cask "claude-code"
 cask "postman"
+cask "logi-options+"         # Logitech peripheral configuration
+cask "resilio-sync"          # P2P file sync
+cask "1password"
+brew "1password-cli"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
