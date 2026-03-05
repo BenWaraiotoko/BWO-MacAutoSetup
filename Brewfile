@@ -1,5 +1,8 @@
 tap "nikitabobko/tap" # Aerospace
-tap "jorgerojas26/lazysql" 
+tap "jorgerojas26/lazysql"
+tap "AlexsJones/llmfit"  # LLM Fit - AI model hardware compatibility checker
+tap "arimxyer/tap"       # Models CLI - AI model comparison TUI
+tap "gromgit/brewtils"   # Taproom - Homebrew TUI browser
 
 # CLI Tools
 brew "mas"           # Mac App Store CLI for automated app installation
@@ -20,6 +23,17 @@ brew "stow"
 brew "neovim"
 brew "kubectl"       # Kubernetes CLI
 brew "tailscale"     # Secure mesh VPN for homelab and remote access
+
+# Terminal Tools & Viewers
+brew "glow"                          # Markdown renderer for terminal
+brew "AlexsJones/llmfit/llmfit"      # AI model hardware compatibility checker
+brew "arimxyer/tap/models"           # AI model comparison TUI (2000+ models)
+brew "gromgit/brewtils/taproom"      # Interactive Homebrew TUI browser
+brew "ranger"                        # VIM-inspired terminal file manager
+brew "btop"                          # System resource monitor (CPU, RAM, disk, network)
+brew "chafa"                         # Render images in terminal
+brew "csvlens"                       # Interactive CSV viewer
+brew "eza"                           # Modern ls replacement with icons and git integration
 
 # Languages n stuff
 brew "python"

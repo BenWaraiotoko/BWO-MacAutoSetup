@@ -162,6 +162,13 @@ export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 
 alias claude="~/.claude/local/claude --ide"
 
+# eza - modern ls replacement (requires: brew install eza)
+if command -v eza &>/dev/null; then
+  alias ls="eza --icons"
+  alias ll="eza -la --icons --git"
+  alias lt="eza --tree --level=2 --icons"
+fi
+
 # Docker CLI completions (if Docker/OrbStack is installed)
 if [[ -d "$HOME/.docker/completions" ]]; then
   fpath=($HOME/.docker/completions $fpath)
