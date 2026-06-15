@@ -65,29 +65,35 @@ MacAutoSetup/
 ## 🛠 What Gets Installed
 
 ### CLI Tools & Languages
-- **Core Utilities**: git, fzf, ripgrep, bat, htop, lazygit, lazysql, tmux, stow, neovim
-- **Languages**: python, pipx, node, nvm
-- **Cloud & DevOps**: awscli, kubectl, tailscale
+- **Core Utilities**: git, fzf, ripgrep, fd, bat, htop, lazygit, lazysql, tmux, stow, neovim
+- **Languages**: python, pipx, uv, node, nvm
+- **Cloud & DevOps**: awscli, kubectl, tailscale, ansible, nmap
 - **GNU Tools**: coreutils, gnu-sed, findutils, gawk (preferred over BSD)
-- **Development**: gh (GitHub CLI), delta (git diff), jq, yq, mas (App Store CLI), 1Password CLI
-- **Terminal Viewers**: glow (Markdown), ranger (file manager), btop (resources), chafa (images), csvlens (CSV), eza (ls replacement)
+- **Development**: gh (GitHub CLI), delta (git diff), jq, yq, mas (App Store CLI), 1Password CLI, hugo (static site generator)
+- **Terminal Viewers**: glow (Markdown), ranger (file manager), btop (resources), chafa (images), csvlens (CSV), eza (ls replacement), mole (Mac cleanup TUI)
 - **AI/ML**: llmfit (hardware compatibility), models (model comparison TUI), taproom (Homebrew TUI)
 
 ### GUI Applications
 - **Terminals**: Ghostty, Warp
 - **Editors**: Zed, Sublime Text, Claude Code, Postman
-- **AI Tools**: Claude, Ollama
+- **AI Tools**: Claude, Ollama, superwhisper (voice dictation)
 - **Productivity**: Raycast, Notion, Spotify, Obsidian, NetNewsWire, Perplexity (App Store)
-- **Utilities**: Aerospace, Shottr, ForkLift, WiFiman, Logi Options+, Resilio Sync
+- **Media**: VLC
+- **Utilities**: Aerospace, Shottr, ForkLift, WiFiman, Logi Options+, Resilio Sync, FreeFileSync, Taphouse (Homebrew GUI)
+- **Remote Access**: Termius (SSH), Royal TSX (RDP/SSH/VNC)
+- **Maker / Hardware**: Arduino IDE, Autodesk Fusion
 - **Security**: 1Password, Proton VPN, Proton Drive, Proton Mail, Proton Pass
 - **Container Runtime**: OrbStack (lightweight Docker alternative)
-- **Communication**: Discord
+- **Communication**: Discord, Telegram (App Store)
 
 ### Mac App Store Apps (via `mas`)
 - Perplexity: Ask Anything
 - Supernote Partner
 - Calendars – agenda et rappels
 - Toggl Track: Hours & Time Log
+- Telegram
+- WireGuard
+- Home Assistant
 
 > **Note**: You must be signed into the Mac App Store for `mas` to install these apps.
 
