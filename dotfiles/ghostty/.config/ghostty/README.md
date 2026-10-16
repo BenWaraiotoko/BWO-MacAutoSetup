@@ -10,7 +10,7 @@ Modern, fast terminal emulator configuration with Catppuccin Mocha theme.
 - **Shell Integration**: Native Ghostty + zsh integration
 
 ### Theme: Catppuccin Mocha
-Consistent with Neovim and Warp terminal configurations.
+Consistent with the Neovim configuration.
 
 **Colors**:
 - Background: `#1e1e2e` (Mocha base)
@@ -44,7 +44,7 @@ Full 256-color palette with Catppuccin Mocha colors for terminal applications.
 The Catppuccin Mocha theme provides:
 - **Soothing pastel colors** - Easy on the eyes for long coding sessions
 - **Excellent contrast** - Clear readability
-- **Consistent theming** - Matches Neovim and Warp
+- **Consistent theming** - Matches Neovim
 - **Full color support** - 256 colors for rich terminal applications
 
 ## Customization
@@ -95,12 +95,3 @@ Ghostty is a modern, GPU-accelerated terminal emulator that:
 - **Shell**: `dotfiles/zsh/.zshrc` (Oh-My-Zsh configuration)
 - **Prompt**: `dotfiles/zsh/.p10k.zsh` (Powerlevel10k customization)
 - **Neovim**: `dotfiles/nvim/` (LazyVim with Catppuccin Mocha)
-- **Warp**: `dotfiles/warp/.warp/themes/` (Alternative terminal with Catppuccin)
-
-## Switching Between Terminals
-
-You have both Ghostty and Warp configured with Catppuccin Mocha:
-- **Ghostty** - Fast, lightweight, native macOS
-- **Warp** - AI-powered, modern features, blocks-based UI
-
-Both use the same shell configuration (Oh-My-Zsh + Powerlevel10k) and theme.

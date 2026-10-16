@@ -117,14 +117,12 @@ if command -v stow &>/dev/null; then
   rm -f "$HOME/.zshrc" 2>/dev/null || true
   rm -f "$HOME/.vimrc" 2>/dev/null || true
   rm -rf "$HOME/.config/nvim" 2>/dev/null || true
-  rm -rf "$HOME/.config/aerospace" 2>/dev/null || true
   rm -rf "$HOME/.config/ghostty" 2>/dev/null || true
-  rm -rf "$HOME/.warp" 2>/dev/null || true
   rm -rf "$HOME/.claude" 2>/dev/null || true
   rm -rf "$HOME/Library/Application Support/Sublime Text/Packages/User" 2>/dev/null || true
   rm -rf "$HOME/.config/zed" 2>/dev/null || true
 
-  stow --target="$HOME" --dir=./dotfiles zsh vim nvim aerospace ghostty warp superclaude sublime-text zed
+  stow --target="$HOME" --dir=./dotfiles zsh vim nvim ghostty superclaude sublime-text zed
 
   # Obsidian config lives inside the vault, not HOME — copy instead of stow
   OBSIDIAN_VAULT="$HOME/Documents/bwo-second-brain"

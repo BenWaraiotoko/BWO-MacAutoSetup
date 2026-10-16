@@ -178,7 +178,7 @@ Press: Enter
 
 ## 💡 Pro Tips
 
-1. **Configure your terminal** to treat Alt/Option key correctly for Aerospace window management
+1. **Configure your terminal** to treat the Option key as Alt so Vim/Neovim Alt mappings work
 2. **Keep basic Vim** for quick edits and server work (where LazyVim isn't available)
 3. **Use which-key in LazyVim** - Press Space and wait to discover commands
 4. **Learn one workflow at a time** - Master file navigation before diving into LSP features

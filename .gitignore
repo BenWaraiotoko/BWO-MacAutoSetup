@@ -1,8 +1,9 @@
 # Neovim
 dotfiles/nvim/.config/nvim/lazy-lock.json
 
-# warp
-dotfiles/warp/.warp/launch_configurations
+# Local working files (machine export and app selection spreadsheet)
+docs/Brewfile.txt
+docs/Applications-V2.xlsx
 
 # Project Documentation
 CLAUDE.md

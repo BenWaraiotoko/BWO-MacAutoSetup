@@ -185,7 +185,7 @@ Some files use different tab widths. Override with:
 ```
 
 ### Colors look wrong?
-Your terminal might not support 256 colors. For Ghostty/Warp/iTerm2, it should work fine.
+Your terminal might not support 256 colors. For Ghostty/iTerm2, it should work fine.
 
 ### Arrow keys not working?
 They work, but **don't use them!** Force yourself to use `h j k l`.

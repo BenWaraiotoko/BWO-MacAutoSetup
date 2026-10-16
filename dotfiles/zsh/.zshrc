@@ -160,7 +160,8 @@ export PATH="$PATH:$HOME/Library/Python/3.9/bin"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias claude="~/.claude/local/claude --ide"
+# Claude Code - always connect to the IDE (binary from the claude-code cask, on PATH)
+alias claude="claude --ide"
 
 # eza - modern ls replacement (requires: brew install eza)
 if command -v eza &>/dev/null; then

@@ -1,314 +1,283 @@
-# BWO-MacAutoSetup
+# 🍎 BWO-MacAutoSetup
 
-A macOS development environment bootstrap system that automates the installation and configuration of a modern, keyboard-driven development workflow. This project sets up a tiling window manager (Aerospace), powerful shell environment (Zsh with Oh-My-Zsh), and essential development tools through automated scripts.
+> A brand-new Mac, one command, a cup of coffee ☕… and by the time you're back, everything is installed.
 
-## 🙏 Acknowledgments
+![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-000000?logo=apple&logoColor=white)
+![Homebrew](https://img.shields.io/badge/Homebrew-Brewfile-FBB040?logo=homebrew&logoColor=black)
+![Zsh](https://img.shields.io/badge/Zsh-Oh%20My%20Zsh%20%2B%20Powerlevel10k-1A2C34?logo=zsh&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-This project is based on [NLaundry/MacAutoSetup](https://github.com/NLaundry/MacAutoSetup). Special thanks to **@NLaundry** for creating the original foundation that made this customized setup possible. The core bootstrap architecture and dotfile management approach are adapted from his excellent work.
+You know that lonely feeling in front of a freshly reinstalled Mac? Empty Dock, plain gray Terminal, and that mental list of a hundred apps to reinstall one by one… forgetting half of them, obviously. (Yes, this comes from experience. There's literally a commit in this repo called "I forgot firefox 😱".)
 
-## ✨ Features
+That's exactly why I built **BWO-MacAutoSetup**. The idea is simple: you run one script, and it turns a blank macOS into a fully tuned dev machine. Homebrew, a solid batch of command-line tools, everyday apps, a Zsh that actually looks good, Neovim, Ghostty, Claude Code… and all my config neatly organized with GNU Stow.
 
-- **Two-Tier Bootstrap**: Automated setup for fresh macOS installs (no Git required) and existing systems
-- **Tiling Window Manager**: Aerospace with keyboard-driven i3-inspired keybindings
-- **Modern Shell**: Oh-My-Zsh with Powerlevel10k theme for a beautiful, informative prompt
-- **Terminal Excellence**: Ghostty and Warp terminals with optimized configurations
-- **Development Tools**: Comprehensive CLI utilities, programming languages, and GUI applications
-- **Dotfile Management**: GNU Stow for clean, symlink-based configuration management
-- **Editor Setup**: LazyVim (Neovim) for full IDE experience, plus minimal Vim for learning
-- **AI Enhancement**: SuperClaude Framework for enhanced Claude Code integration
-- **Package Manager**: Homebrew with declarative `Brewfile` for reproducible installs
+And here's the cool part: everything is **declarative**. A single file, the [`Brewfile`](Brewfile), describes everything that gets installed. Want to add an app? One line. Want to drop one? One line. And you can rerun the script as many times as you like: anything already installed is simply skipped.
 
-## 🚀 Quick Start
+---
 
-### Option 1: Fresh macOS Install (No Git)
+## 🚀 Installation
+
+### Option 1: a brand-new Mac (no Git needed)
+
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/BenWaraiotoko/BWO-MacAutoSetup/main/bootstrap-nogit.sh)
 ```
 
-This bootstrap script will:
-1. Install Xcode Command Line Tools (includes Git)
-2. Install Homebrew
-3. Clone this repository to `~/Projects/BWO-MacAutoSetup`
-4. Run the main [`bootstrap.sh`](bootstrap.sh) script
+This little script takes care of everything:
+1. Installs the **Xcode Command Line Tools** (which include Git)
+2. Installs **Homebrew**
+3. Clones this repo into `~/Projects/BWO-MacAutoSetup`
+4. Hands over to the real conductor: [`bootstrap.sh`](bootstrap.sh)
 
-### Option 2: Existing System with Git
+### Option 2: you already have Git
+
 ```bash
 git clone https://github.com/BenWaraiotoko/BWO-MacAutoSetup.git ~/Projects/BWO-MacAutoSetup
 cd ~/Projects/BWO-MacAutoSetup
 ./bootstrap.sh
 ```
 
-## 📁 Project Structure
+### 🎬 What happens next
 
-```
-MacAutoSetup/
-├── bootstrap-nogit.sh          # Fresh macOS bootstrap (installs Git first)
-├── bootstrap.sh                # Main setup orchestration
-├── Brewfile                    # All dependencies (CLI tools, apps, fonts)
-├── dotfiles/                   # GNU Stow packages
-│   ├── zsh/                    # Oh-My-Zsh config with Powerlevel10k
-│   ├── nvim/                   # LazyVim configuration
-│   ├── vim/                    # Minimal Vim config for learning
-│   ├── ghostty/                # Ghostty terminal configuration
-│   ├── aerospace/              # Tiling window manager config
-│   ├── warp/                   # Warp terminal themes
-│   ├── zed/                    # Zed editor config
-│   ├── sublime-text/           # Sublime Text preferences
-│   ├── obsidian/               # Obsidian vault config (copied, not stow-managed)
-│   └── superclaude/            # SuperClaude Framework config
-└── docs/
-    ├── VIM_LEARNING_GUIDE.md   # Comprehensive Vim/Neovim guide
-    ├── ZSH_PLUGINS.md          # Complete plugin reference
-    └── TOOLS.md                # CLI tools reference
-```
+While you sip your coffee, `bootstrap.sh`:
 
-## 🛠 What Gets Installed
+1. 🍺 updates Homebrew and installs the whole `Brewfile` (`brew bundle`)
+2. 🐚 installs **Oh My Zsh** and the **Powerlevel10k** theme
+3. 🤖 installs the **SuperClaude** framework with `pipx`
+4. 🔗 links the dotfiles with **GNU Stow**: `zsh`, `vim`, `nvim`, `ghostty`, `superclaude`, `sublime-text` and `zed`
+5. 🧠 restores the **Obsidian** config into the `~/Documents/bwo-second-brain` vault (if it exists)
+6. 🎨 installs the **Catppuccin** theme for Sublime Text
+7. 🗂 sets up **Finder** properly: hidden files and extensions visible, path and status bars, column view
 
-### CLI Tools & Languages
-- **Core Utilities**: git, fzf, ripgrep, fd, bat, htop, lazygit, lazysql, tmux, stow, neovim
-- **Languages**: python, pipx, uv, node, nvm
-- **Cloud & DevOps**: awscli, kubectl, tailscale, ansible, nmap
-- **GNU Tools**: coreutils, gnu-sed, findutils, gawk (preferred over BSD)
-- **Development**: gh (GitHub CLI), delta (git diff), jq, yq, mas (App Store CLI), 1Password CLI, hugo (static site generator)
-- **Terminal Viewers**: glow (Markdown), ranger (file manager), btop (resources), chafa (images), csvlens (CSV), eza (ls replacement), mole (Mac cleanup TUI)
-- **AI/ML**: llmfit (hardware compatibility), models (model comparison TUI), taproom (Homebrew TUI)
-
-### GUI Applications
-- **Terminals**: Ghostty, Warp
-- **Editors**: Zed, Sublime Text, Claude Code, Postman
-- **AI Tools**: Claude, Ollama, superwhisper (voice dictation)
-- **Productivity**: Raycast, Notion, Spotify, Obsidian, NetNewsWire, Perplexity (App Store)
-- **Media**: VLC
-- **Utilities**: Aerospace, Shottr, ForkLift, WiFiman, Logi Options+, Resilio Sync, FreeFileSync, Taphouse (Homebrew GUI)
-- **Remote Access**: Termius (SSH), Royal TSX (RDP/SSH/VNC)
-- **Maker / Hardware**: Arduino IDE, Autodesk Fusion
-- **Security**: 1Password, Proton VPN, Proton Drive, Proton Mail, Proton Pass
-- **Container Runtime**: OrbStack (lightweight Docker alternative)
-- **Communication**: Discord, Telegram (App Store)
-
-### Mac App Store Apps (via `mas`)
-- Perplexity: Ask Anything
-- Supernote Partner
-- Calendars – agenda et rappels
-- Toggl Track: Hours & Time Log
-- Telegram
-- WireGuard
-- Home Assistant
-
-> **Note**: You must be signed into the Mac App Store for `mas` to install these apps.
-
-### Fonts
-- JetBrains Mono Nerd Font (with icons for terminal and editors)
-
-## 🔧 Key Components
-
-### Shell Environment (Oh-My-Zsh)
-- **Framework**: Oh-My-Zsh for plugin management and community themes
-- **Theme**: Powerlevel10k for a fast, informative, and customizable prompt
-- **Configuration**: Managed via GNU Stow in [`dotfiles/zsh/`](dotfiles/zsh/)
-
-See [`docs/ZSH_PLUGINS.md`](docs/ZSH_PLUGINS.md) for plugin documentation.
-
-### Window Management (Aerospace)
-i3-inspired tiling window manager with keyboard-first navigation:
-- `Alt + j/k/l/;` - Navigate between windows
-- `Alt + Shift + j/k/l/;` - Move windows
-- `Alt + 1-6` - Switch workspaces
-- `Alt + t` - Launch Ghostty terminal
-- `Alt + r` - Enter resize mode
-
-Configuration: [`dotfiles/aerospace/.config/`](dotfiles/aerospace/.config/)
-
-### Editor Setup
-**LazyVim (Neovim)**: Full-featured IDE with LSP, fuzzy finding, Git integration
-- Location: [`dotfiles/nvim/.config/nvim/`](dotfiles/nvim/.config/nvim/)
-- First launch automatically installs plugins
-- Press `Space` to open which-key command palette
-
-**Minimal Vim**: Zero-plugin configuration perfect for learning fundamentals
-- Location: [`dotfiles/vim/.vimrc`](dotfiles/vim/.vimrc)
-- Ideal for working through `vimtutor`
-
-See [`docs/VIM_LEARNING_GUIDE.md`](docs/VIM_LEARNING_GUIDE.md) for learning path.
-
-### SuperClaude Framework
-AI-enhanced development with Claude Code integration:
-- **30+ Slash Commands**: `/sc:analyze`, `/sc:implement`, `/sc:improve`, and more
-- **16 Specialized Personas**: Domain-specific AI expertise
-- **MCP Integration**: Enhanced capabilities with external servers
-- **Configuration**: [`dotfiles/superclaude/.claude/`](dotfiles/superclaude/.claude/)
-- **CLI**: `superclaude --help` for available commands
-
-## 📚 Usage Examples
-
-### Managing Dotfiles with GNU Stow
-```bash
-# Link specific packages to $HOME
-stow --target=$HOME --dir=./dotfiles zsh nvim aerospace
-
-# Remove symlinks (uninstall)
-stow --target=$HOME --dir=./dotfiles --delete zsh
-
-# Re-link after changes (update)
-stow --target=$HOME --dir=./dotfiles --restow zsh
-```
-
-### Shell Customization
-```bash
-# Reload shell configuration
-source ~/.zshrc
-
-# Customize Powerlevel10k prompt
-p10k configure
-
-# Add custom aliases
-echo 'alias myalias="my command"' >> ~/.oh-my-zsh/custom/aliases.zsh
-source ~/.zshrc
-```
-
-### Managing Dependencies
-```bash
-# Install/update from Brewfile
-brew bundle --file=./Brewfile
-
-# Check what's installed vs Brewfile
-brew bundle check --file=./Brewfile
-
-# Clean up packages not in Brewfile
-brew bundle cleanup --file=./Brewfile
-
-# Search Mac App Store
-mas search "App Name"
-```
-
-## 🎓 Learning Path
-
-### Vim/Neovim Progression
-1. **Stage 1**: Start with basic vim
-   - Run `vimtutor` to learn fundamental motions
-   - Use `vim` (not `nvim`) to practice without plugins
-   - Focus on: hjkl, i/a/o, d/y/p, :w/:q
-
-2. **Stage 2**: Graduate to LazyVim
-   - Launch `nvim` (first launch installs plugins automatically)
-   - Press `Space` and wait for which-key to show available commands
-   - Explore LSP features, fuzzy finding, Git integration
-
-See full guide: [`docs/VIM_LEARNING_GUIDE.md`](docs/VIM_LEARNING_GUIDE.md)
-
-### Shell Enhancement
-1. Start with standard Oh-My-Zsh installation
-2. Explore installed plugins gradually
-3. Customize prompt with `p10k configure`
-4. Add personal aliases and functions
-
-## 🔍 Troubleshooting
-
-### Bootstrap Issues
-
-**Homebrew installation fails**:
-```bash
-# Uninstall and retry
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-# Re-run bootstrap
-./bootstrap.sh
-```
-
-**Stow conflicts with existing files**:
-```bash
-# Check for conflicts (dry run)
-stow -n --target=$HOME --dir=./dotfiles zsh
-
-# Backup existing files
-mv ~/.zshrc ~/.zshrc.backup
-
-# Retry stow
-stow --target=$HOME --dir=./dotfiles zsh
-```
-
-**Shell not updating**:
-```bash
-# Verify default shell
-echo $SHELL
-
-# Change to zsh if needed
-chsh -s $(which zsh)
-
-# Restart terminal
-```
-
-### Validation Commands
-```bash
-# Check Brewfile status
-brew bundle check --file=./Brewfile
-
-# Verify dotfiles are linked
-ls -la ~ | grep "\->"
-
-# Test shell loads correctly
-zsh -c 'echo $PATH'
-```
-
-## 🏛 Architecture Philosophy
-
-### Design Principles
-- **Community Defaults**: Use battle-tested configurations (LazyVim, Oh-My-Zsh) over custom
-- **GNU Tools**: Prefer GNU versions over BSD for consistency with Linux
-- **Modular Design**: Stow packages allow selective installation
-- **Declarative**: Brewfile as single source of truth for dependencies
-- **Minimal Maintenance**: Rely on well-maintained upstream projects
-
-### Configuration Strategy
-- **Separation**: Keep dotfiles separate from bootstrap logic
-- **Version Control**: Track configurations, not build artifacts
-- **Upgradability**: Easy to pull upstream updates
-- **Portability**: Works on any macOS system
-
-## 🚦 Post-Installation Steps
-
-After running the bootstrap script:
-
-1. **Sign into Mac App Store** - Required for `mas` to install apps
-2. **Restart terminal** - Or run `source ~/.zshrc`
-3. **Configure Powerlevel10k** - Run `p10k configure` to customize prompt
-4. **Launch Neovim** - Run `nvim` to trigger plugin installation
-5. **Restart Claude Code** - To access SuperClaude commands (type `/sc:`)
-6. **Start with vimtutor** - If new to Vim: `vimtutor` in terminal
-
-## 🤝 Contributing
-
-This is a personal configuration tailored to my workflow, but you're encouraged to fork this repository and adapt it to your own needs—just as I did with [NLaundry/MacAutoSetup](https://github.com/NLaundry/MacAutoSetup).
-
-### Fork & Customize
-1. Fork this repository
-2. Modify the [`Brewfile`](Brewfile) with your preferred applications
-3. Adjust dotfile configurations in [`dotfiles/`](dotfiles/)
-4. Update [`bootstrap.sh`](bootstrap.sh) if needed
-5. Make it your own!
-
-### Contributing Back
-If you have improvements that could benefit others:
-1. Create a feature branch
-2. Test changes on a fresh macOS install (or VM)
-3. Submit a pull request with clear description
-
-Please maintain compatibility with macOS and respect the dotfile structure.
-
-## 📄 License
-
-This project is released under the MIT License, following the open-source spirit of sharing and customization. Feel free to use, modify, and distribute as you see fit.
-
-## 🔗 Related Projects
-
-- **Original Project**: [NLaundry/MacAutoSetup](https://github.com/NLaundry/MacAutoSetup) - The foundation this project builds upon
-- **LazyVim**: [LazyVim/LazyVim](https://github.com/LazyVim/LazyVim) - Neovim configuration
-- **Oh-My-Zsh**: [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) - Zsh framework
-- **Powerlevel10k**: [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k) - Zsh theme
-- **Aerospace**: [nikitabobko/AeroSpace](https://github.com/nikitabobko/AeroSpace) - Tiling window manager
-- **SuperClaude**: AI enhancement framework for Claude Code
-- **GNU Stow**: [GNU Stow](https://www.gnu.org/software/stow/) - Symlink farm manager
+> ⚠️ **Heads up**: before linking the dotfiles, the script **deletes your existing configs** (`~/.zshrc`, `~/.vimrc`, `~/.config/nvim`, `~/.config/ghostty`, `~/.config/zed`, `~/.claude`, Sublime Text preferences). On a fresh Mac, no problem. On your daily driver, make a backup first. Just saying. 😇
 
 ---
 
-**Built for macOS** | **Keyboard-Driven Workflow** | **Terminal-First Development**
-# BWO-MacAutoSetup
+## 🧰 What gets installed
+
+Here's the menu. The detailed list, with a link and a description for every tool, lives in [`docs/TOOLS.md`](docs/TOOLS.md).
+
+### Command line
+
+| | |
+|---|---|
+| 🛠 **The essentials** | git, gh, git-delta, fzf, ripgrep, fd, bat, eza, tree, jq, yq, stow, wget, rsync, mas, dosfstools |
+| 🖥 **In the terminal** | neovim, tmux, htop, btop, lazygit, lazysql, glow, csvlens, chafa, mole, tuios |
+| 🐍 **Languages** | python, pipx, uv, poetry, node, nvm, lua |
+| 🐃 **GNU** | coreutils, gnu-sed, findutils, gawk (because macOS's BSD sed, well…) |
+| ☁️ **Dev & infra** | awscli, kubectl, ansible, hugo, powershell, xcodegen, shellcheck, pandoc, nmap |
+| 🎬 **Video** | ffmpeg, x264, x265, xvid |
+| 🤖 **AI** | llmfit, models, rtk, opencode |
+
+### Apps
+
+| | |
+|---|---|
+| ⌨️ **Terminal & editors** | Ghostty, Zed, Visual Studio Code, Sublime Text |
+| 🤖 **AI** | Claude, Claude Code, Ollama, FluidVoice |
+| 🧪 **Dev** | OrbStack (way lighter than Docker Desktop), Postman, Termius, Royal TSX |
+| ⚡ **Productivity** | Raycast, Rectangle, Notion, Obsidian, NetNewsWire, draw.io |
+| 🔐 **Security** | 1Password (and its CLI), Proton VPN |
+| 🎧 **Communication & media** | Discord, Spotify, VLC, Proton Mail |
+| ☁️ **Storage** | Proton Drive, FreeFileSync |
+| 🔧 **Maker & hardware** | Arduino IDE, Autodesk Fusion |
+| 🧹 **Utilities** | AppCleaner, balenaEtcher, Taphouse, Vorssaint |
+| 🍏 **Mac App Store** | Developer, Xcode, Supernote Partner, Toggl Track, Telegram, WireGuard, Home Assistant |
+| 🔤 **Fonts** | Fira Code, JetBrains Mono, JetBrains Mono Nerd Font, Meslo LG Nerd Font |
+
+> 💡 For Mac App Store apps, you need to be signed into the App Store, otherwise `mas` can't install anything.
+
+### And as a bonus
+
+- **56 VS Code extensions**: themes, Jupyter, remote development, C/C++, SQL, GitHub, AI assistants…
+- **Global npm packages**: a whole bunch of MCP servers (Playwright, filesystem, GitHub, Notion, Brave Search, Magic), Gemini CLI, ts-node and filefive
+- **A uv tool**: mistral-vibe
+
+---
+
+## ✨ The little things that make life better
+
+### 🐚 A shell done right
+Oh My Zsh with the **Powerlevel10k** theme, for a prompt that's fast, pretty, and just chatty enough. The plugins match the installed tools (git, gh, docker, kubectl, aws, python, node, nvm, fzf…) and are all documented in [`docs/ZSH_PLUGINS.md`](docs/ZSH_PLUGINS.md).
+
+Bonus: `ls` is replaced by **eza**, with icons and Git status:
+
+```zsh
+ls   # eza --icons
+ll   # eza -la --icons --git
+lt   # eza --tree --level=2 --icons
+```
+
+### 🎨 Catppuccin everywhere
+The same **Catppuccin** theme in Ghostty, Neovim and Sublime Text (and even for Zed's icons). Your eyes will thank you after a late-night coding session.
+
+### 📝 Neovim for the grown-ups, Vim for learning
+- **LazyVim** ([`dotfiles/nvim/`](dotfiles/nvim/.config/nvim/)): a real IDE with LSP, fuzzy finding and Git integration. Plugins install themselves on first launch. Press `Space` and let which-key guide you.
+- **Minimal Vim** ([`dotfiles/vim/.vimrc`](dotfiles/vim/.vimrc)): zero plugins, perfect for practicing with `vimtutor`.
+
+New to all this? I wrote a guide to go from one to the other smoothly: [`docs/VIM_LEARNING_GUIDE.md`](docs/VIM_LEARNING_GUIDE.md).
+
+### 🪟 Tidy windows with Rectangle
+With the default shortcuts (the "Recommended" set):
+- `Ctrl + Option + ←/→`: left / right half
+- `Ctrl + Option + Return`: maximize
+- `Ctrl + Option + C`: center
+
+Shortcuts are set in Rectangle's preferences (they're not managed by this repo).
+
+### 🤖 SuperClaude to supercharge Claude Code
+The **SuperClaude** framework adds a ton of commands to Claude Code (`/sc:analyze`, `/sc:implement`, `/sc:improve`…), specialized personas, and MCP server integration. The config lives in [`dotfiles/superclaude/.claude/`](dotfiles/superclaude/.claude/), and `superclaude --help` tells you the rest.
+
+---
+
+## 📁 How it's organized
+
+```
+BWO-MacAutoSetup/
+├── bootstrap-nogit.sh          # For a brand-new Mac (installs Git first)
+├── bootstrap.sh                # The conductor
+├── Brewfile                    # The shopping list (CLI, apps, fonts, extensions)
+├── dotfiles/                   # GNU Stow packages
+│   ├── zsh/                    # Oh My Zsh + Powerlevel10k
+│   ├── nvim/                   # LazyVim
+│   ├── vim/                    # Minimal Vim for learning
+│   ├── ghostty/                # Ghostty terminal
+│   ├── zed/                    # Zed editor
+│   ├── sublime-text/           # Sublime Text preferences
+│   ├── obsidian/               # Obsidian vault config (copied, not managed by Stow)
+│   └── superclaude/            # SuperClaude config
+└── docs/
+    ├── TOOLS.md                # Every installed tool
+    ├── VIM_LEARNING_GUIDE.md   # The Vim / Neovim guide
+    └── ZSH_PLUGINS.md          # The Zsh plugins
+```
+
+---
+
+## 🛠 Day-to-day
+
+### Managing dotfiles with Stow
+
+```bash
+# Link packages into $HOME
+stow --target=$HOME --dir=./dotfiles zsh nvim ghostty
+
+# Remove the links (uninstall)
+stow --target=$HOME --dir=./dotfiles --delete zsh
+
+# Relink after a change
+stow --target=$HOME --dir=./dotfiles --restow zsh
+```
+
+### Managing apps with the Brewfile
+
+```bash
+# Install / update from the Brewfile
+brew bundle --file=./Brewfile
+
+# Check what's missing compared to the Brewfile
+brew bundle check --file=./Brewfile
+
+# Uninstall everything that's not in the Brewfile (careful, this one bites!)
+brew bundle cleanup --file=./Brewfile
+
+# Find the ID of a Mac App Store app
+mas search "App Name"
+```
+
+### Customizing the shell
+
+```bash
+source ~/.zshrc     # reload the config
+p10k configure      # redo your Powerlevel10k prompt
+```
+
+---
+
+## ✅ After installation
+
+1. **Sign into the Mac App Store**, otherwise `mas` can't install anything
+2. **Restart your terminal** (or run `source ~/.zshrc`)
+3. **Customize your prompt** with `p10k configure`
+4. **Launch `nvim`** once so it installs its plugins
+5. **Restart Claude Code** to get the SuperClaude commands (type `/sc:`)
+6. **New to Vim?** Start with `vimtutor`, you'll thank me later
+
+---
+
+## 🆘 Something's off?
+
+**Homebrew installation fails**:
+```bash
+# Uninstall Homebrew…
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+# …then run it again
+./bootstrap.sh
+```
+
+**Stow complains about existing files**:
+```bash
+stow -n --target=$HOME --dir=./dotfiles zsh   # dry run, to see the conflicts
+mv ~/.zshrc ~/.zshrc.backup                   # move the old file out of the way
+stow --target=$HOME --dir=./dotfiles zsh      # and try again
+```
+
+**The shell doesn't change**:
+```bash
+echo $SHELL            # check the default shell
+chsh -s $(which zsh)   # switch to zsh if needed, then restart the terminal
+```
+
+**Check that everything is in place**:
+```bash
+brew bundle check --file=./Brewfile   # is the whole Brewfile installed?
+ls -la ~ | grep "\->"                 # are the dotfiles linked?
+zsh -c 'echo $PATH'                   # does the shell load correctly?
+```
+
+---
+
+## 🧭 The philosophy
+
+- **Proven defaults first**: LazyVim and Oh My Zsh rather than a homemade config nobody can maintain
+- **GNU tools** over their BSD counterparts, to keep the same habits as on Linux
+- **Modular**: each Stow package installs independently of the others
+- **Declarative**: the `Brewfile` is the single source of truth
+- **Low maintenance**: rely on well-maintained projects and let them do the heavy lifting
+
+---
+
+## 🍴 Fork it!
+
+This is my personal setup, tailored to the way I work. But nothing stops you from forking it and bending it to your liking, exactly like I did with NLaundry's:
+
+1. Fork the repo
+2. Edit the [`Brewfile`](Brewfile) with your favorite apps
+3. Tweak the configs in [`dotfiles/`](dotfiles/)
+4. Adjust [`bootstrap.sh`](bootstrap.sh) if needed
+5. And there you go, it's yours!
+
+Got an improvement that could help others? Create a branch, test it on a clean macOS install (or in a VM), and send a pull request with a clear description.
+
+---
+
+## 🙏 Thanks
+
+This project is based on [NLaundry/MacAutoSetup](https://github.com/NLaundry/MacAutoSetup). Huge thanks to **@NLaundry** for the foundations: the bootstrap architecture and the dotfile management come from his excellent work.
+
+And thanks as well to the projects without which none of this would run:
+- [LazyVim](https://github.com/LazyVim/LazyVim): the Neovim config
+- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh): the Zsh framework
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k): the Zsh theme
+- [GNU Stow](https://www.gnu.org/software/stow/): the symlink farm manager
+- SuperClaude: the framework that supercharges Claude Code
+
+## 📄 License
+
+MIT. Use it, tweak it, share it, that's what it's for.
+
+---
+
+Anyway, if you're tired of sacrificing an entire weekend every time you reinstall your Mac, you know what to do. 😎
+
+**Built for macOS** · **Keyboard first** · **Terminal all the way**
